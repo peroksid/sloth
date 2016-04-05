@@ -15,5 +15,5 @@ Use
     "what-ever"
     26> sloth:slugify(<<"what ever">>).
     <<"what-ever">>
-    27> sloth:slugify(<<"WhaT _ ever% ---">>, [{to_lower, true}, {capitalize, true}, {safe_chars, "%"}]).
-    <<"what-ever">>
+    29> sloth:slugify(<<"WhaT _ ever% ---">>, [{to_lower, true}, {capitalize, true}, {safe_chars, "%"}]).
+    <<"What-ever%">>

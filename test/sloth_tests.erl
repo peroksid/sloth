@@ -33,7 +33,9 @@ to_lower_test() ->
     
 to_lower_capitalize_test() ->
     ?assertEqual(<<"Test-to-lower">>, sloth:slugify(<<"Test TO lower">>, [{to_lower, true}, {capitalize, true}])),
-    ?assertEqual("Test-to-lower", sloth:slugify("Test TO lower", [{to_lower, true}, {capitalize, true}])).
+    ?assertEqual("Test-to-lower", sloth:slugify("Test TO lower", [{to_lower, true}, {capitalize, true}])),
+    ?assertEqual(<<"What-ever">>, sloth:slugify(<<"WhaT _ ever% ---">>, [{to_lower, true}, {capitalize, true}])).
+
 
 sanitize_test() ->
     ?assertEqual(<<"test-sanitize">>, sloth:slugify(<<"test_sanitize">>)),
@@ -45,7 +47,8 @@ safe_chars_test() ->
     ?assertEqual(<<"test_s-nitize">>, sloth:slugify(<<"test_s%nitize">>, [{safe_chars, "_"}])),
     ?assertEqual("test_s-nitize", sloth:slugify("test_s%nitize", [{safe_chars, "_"}])),
     ?assertEqual(<<"test_s%nitize">>, sloth:slugify(<<"test_s%nitize">>, [{safe_chars, "_%"}])),
-    ?assertEqual("test_s%nitize", sloth:slugify("test_s%nitize", [{safe_chars, "_%"}])).
+    ?assertEqual("test_s%nitize", sloth:slugify("test_s%nitize", [{safe_chars, "_%"}])),
+    ?assertEqual(<<"What-ever%">>, sloth:slugify(<<"WhaT _ ever% ---">>, [{to_lower, true}, {capitalize, true}, {safe_chars, "%"}])).
 
     
     
