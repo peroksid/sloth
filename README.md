@@ -11,8 +11,9 @@ Build
 Use
 ---
 
-sloth:slugify("what ever")
-sloth:slugify(<<"what ever">>)
-sloth:slugify("foo", [{to_lower, true}, {capitalize, true}, {safe_chars, "%_"}])
-
-
+    25> sloth:slugify("what ever").
+    "what-ever"
+    26> sloth:slugify(<<"what ever">>).
+    <<"what-ever">>
+    27> sloth:slugify(<<"WhaT _ ever% ---">>, [{to_lower, true}, {capitalize, true}, {safe_chars, "%"}]).
+    <<"what-ever">>
